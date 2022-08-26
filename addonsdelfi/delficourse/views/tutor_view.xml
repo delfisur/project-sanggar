@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="delficourse_tutor_tree_inherit" model="ir.ui.view">
+        <field name="name">Tutor inherit ke respartner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <!-- Add new fields here -->
+                <field name="is_tutor"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="delficourse_tutor_form_inherit" model="ir.ui.view">
+        <field name="name">Tutor inherit formrespartner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <!-- Add your fields or attributes here -->
+                <field name="is_tutor"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="delficourse_tutor_view_search" model="ir.ui.view">
+        <field name="name">Tutor Seacrh</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                    <filter string="Tutor" name="tutornya" domain="[('is_tutor','=',True)]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="delficourse_tutor_action" model="ir.actions.act_window">
+        <field name="name">Tutor Action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{
+            'search_default_tutornya':1,
+            'default_is_tutor':True,
+        }
+        </field>
+    </record>
+
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delficourse_tutor_menu_action"
+              name="Tutor"
+              parent="delficourse_penyelenggara_categ"
+              action="delficourse_tutor_action"
+              sequence="10"/>
+</odoo>

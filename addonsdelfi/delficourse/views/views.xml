@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="delficourse.list">
+      <field name="name">delficourse list</field>
+      <field name="model">delficourse.delficourse</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="delficourse.action_window">
+      <field name="name">delficourse window</field>
+      <field name="res_model">delficourse.delficourse</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="delficourse.action_server">
+      <field name="name">delficourse server</field>
+      <field name="model_id" ref="model_delficourse_delficourse"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="delficourse" id="delficourse.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="delficourse.menu_1" parent="delficourse.menu_root"/>
+    <menuitem name="Menu 2" id="delficourse.menu_2" parent="delficourse.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="delficourse.menu_1_list" parent="delficourse.menu_1"
+              action="delficourse.action_window"/>
+    <menuitem name="Server to list" id="delficourse" parent="delficourse.menu_2"
+              action="delficourse.action_server"/>
+-->
+  </data>
+</odoo>

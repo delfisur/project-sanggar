@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="delficourse_keterampilan_view_tree" model="ir.ui.view">
+        <field name="name">Keterampilan</field>
+        <field name="model">delficourse.keterampilan</field>
+        <field name="arch" type="xml">
+            <tree string="delficourse_keterampilan_tree">
+                <field name="name"/>
+                <field name="pilihan"/>
+                <field name="level_belajar"/>
+                <field name="biaya"/>
+                <field name="kapasitas_kelas"/>
+                <field name="jml_siswa_keterampilan"/>
+                <field name="sisa_kapasitas"/>
+                <field name="seni"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="delficourse_keterampilan_view_form" model="ir.ui.view">
+        <field name="name">Form Keterampilan</field>
+        <field name="model">delficourse.keterampilan</field>
+        <field name="arch" type="xml">
+            <form string="delficourse_keterampilan_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="pilihan"/>
+                        <field name="level_belajar"/>
+                        <field name="biaya"/>
+                        <field name="kapasitas_kelas"/>
+                        <field name="seni"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="delficourse_keterampilan_action" model="ir.actions.act_window">
+        <field name="name">Kursus Keterampilan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delficourse.keterampilan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delficourse_keterampilan_menu_action"
+              name="Keterampilan"
+              parent="delficourse_pendaftaran_categ"
+              action="delficourse_keterampilan_action"
+              sequence="30"/>
+</odoo>

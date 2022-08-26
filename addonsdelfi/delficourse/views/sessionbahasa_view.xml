@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="delficourse_sessionbahasa_view_tree" model="ir.ui.view">
+        <field name="name">delficourse_sessionbahasa_view_tree</field>
+        <field name="model">delficourse.sessionbahasa</field>
+        <field name="arch" type="xml">
+            <tree string="delficourse_sessionbahasa_tree">
+                <field name="nama_kursus"/>
+                <field name="tgl_mulai"/>
+                <field name="nama_tutor"/>
+                <field name="jml_siswa"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="delficourse_sessionbahasaview_form" model="ir.ui.view">
+        <field name="name">delficourse_sessionbahasa_view_form</field>
+        <field name="model">delficourse.sessionbahasa</field>
+        <field name="arch" type="xml">
+            <form string="delficourse_sessionbahasa_form">
+                <sheet>
+                    <group>
+                        <field name="nama_kursus"/>
+                        <field name="tgl_mulai"/>
+                        <field name="nama_tutor"/>
+                        <field name="jml_siswa"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page name="peserta" string="Peserta">
+                            <field name="peserta_bahasa_ids">
+                                <tree editable ="bottom">
+                                    <field name="peserta_id"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="delficourse_sessionbahasa_action" model="ir.actions.act_window">
+        <field name="name">Session Bahasa</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delficourse.sessionbahasa</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delficourse_sessionbahasa_menu_action"
+              name="Session Bahasa"
+              parent="delficourse_session_categ"
+              action="delficourse_sessionbahasa_action"
+              sequence="20"/>
+</odoo>

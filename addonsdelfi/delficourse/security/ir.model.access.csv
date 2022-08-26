@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_delficourse_pendaftaran,access.delficourse.pendaftaran,model_delficourse_pendaftaran,,1,1,1,1
+access_delficourse_level,access.delficourse.level,model_delficourse_level,,1,1,1,1
+access_delficourse_pemprograman,access.delficourse.pemprograman,model_delficourse_pemprograman,,1,1,1,1
+access_delficourse_bahasa,access.delficourse.bahasa,model_delficourse_bahasa,,1,1,1,1
+access_delficourse_eskul,access.delficourse.eskul,model_delficourse_eskul,,1,1,1,1
+access_delficourse_olahraga,access.delficourse.olahraga,model_delficourse_olahraga,,1,1,1,1
+access_delficourse_sessionpemprograman,access.delficourse.sessionpemprograman,model_delficourse_sessionpemprograman,,1,1,1,1
+access_delficourse_pesertapemprograman,access.delficourse.pesertapemprograman,model_delficourse_pesertapemprograman,,1,1,1,1
+access_delficourse_sessionbahasa,access.delficourse.sessionbahasa,model_delficourse_sessionbahasa,,1,1,1,1
+access_delficourse_pesertabahasa,access.delficourse.pesertabahasa,model_delficourse_pesertabahasa,,1,1,1,1
+access_delficourse_keterampilan,access.delficourse.keterampilan,model_delficourse_keterampilan,,1,1,1,1
+access_delficourse_sessionketerampilan,access.delficourse.sessionketerampilan,model_delficourse_sessionketerampilan,,1,1,1,1
+access_delficourse_pesertaketerampilan,access.delficourse.pesertaketerampilan,model_delficourse_pesertaketerampilan,,1,1,1,1
+

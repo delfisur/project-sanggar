@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="delficourse_root"
+              name="DelCourse"
+              sequence="10"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="delficourse_pendaftaran_categ"
+              name="Nama Kursus"
+              parent="delficourse_root"
+              sequence="10"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="delficourse_level_categ"
+              name="Level"
+              parent="delficourse_root"
+              sequence="30"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="delficourse_bahasa_categ"
+              name="Bahasa"
+              parent="delficourse_root"
+              sequence="20"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="delficourse_pesertadidik_categ"
+              name="Peserta Didik"
+              parent="delficourse_root"
+              sequence="40"/>
+     <menuitem id="delficourse_penyelenggara_categ"
+              name="Penyelenggara"
+              parent="delficourse_root"
+              sequence="50"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="delficourse_session_categ"
+              name="Session"
+              parent="delficourse_root"
+              sequence="60"/>
+    <!-- This Menu Item Must have a parent -->
+</odoo>

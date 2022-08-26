@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="delficourse_pesertadidik_tree_inherit" model="ir.ui.view">
+        <field name="name">Peserta Didik inherit tree respartner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <!-- Add new fields here -->
+                <field name="jenis_kursus"/>
+            </xpath>
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="is_peserta"/>
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="string">Telepone</attribute>
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="delficourse_pesertadidik_form_inherit" model="ir.ui.view">
+        <field name="name">Peserta Didik inherit from respartner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <!-- Add your fields or attributes here -->
+                <field name="jenis_kursus"/>
+            </xpath>
+            <xpath expr="//field[@name='jenis_kursus']" position="after">
+                <field name="is_peserta"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="delficourse_pesertadidik_view_search" model="ir.ui.view">
+        <field name="name">Peserta Seacrh</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                    <filter string="Peserta" name="pesertanya" domain="[('is_peserta','=',True)]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="delficourse_pesertadidik_action" model="ir.actions.act_window">
+        <field name="name">Peserta Didik</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{
+            'search_default_pesertanya':1,
+            'default_is_peserta':True,
+        }
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delficourse_pesertadidik_menu_action"
+              name="Peserta Didik"
+              parent="delficourse_root"
+              action="delficourse_pesertadidik_action"
+              sequence="15"/>
+</odoo>

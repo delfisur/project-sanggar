@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="delficourse_level_view_tree" model="ir.ui.view">
+        <field name="name">Level Kursus</field>
+        <field name="model">delficourse.level</field>
+        <field name="arch" type="xml">
+            <tree string="_tree">
+                <field name="name"/>
+                <field name="keterangan"/>
+                <field name="biaya"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="delficourse_level_view_form" model="ir.ui.view">
+        <field name="name">Level Kursus</field>
+        <field name="model">delficourse.level</field>
+        <field name="arch" type="xml">
+            <form string="delficourse_level_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="keterangan"/>
+                        <field name="biaya"/>
+                        <field name="course_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="delficourse_level_action" model="ir.actions.act_window">
+        <field name="name">Level Kursus</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delficourse.level</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+
+    <menuitem id="delficourse_level_menu_action" 
+              name="Level Kursus"
+              parent="delficourse_root"
+              action="delficourse_level_action" 
+              sequence="20"/>
+</odoo>

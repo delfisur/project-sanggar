@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="delficourse_admin_tree_inherit" model="ir.ui.view">
+        <field name="name">Admin inherit ke respartner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="is_admin"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="delficourse_admin_form_inherit" model="ir.ui.view">
+        <field name="name">Admin inherit ke formrespartner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="is_admin"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="delficourse_admin_view_search" model="ir.ui.view">
+        <field name="name">Admin Seacrh</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                    <filter string="Admin" name="adminnya" domain="[('is_admin','=',True)]"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="delficourse_admin_action" model="ir.actions.act_window">
+        <field name="name">Admin Action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{
+            'search_default_adminnya':1,
+            'default_is_admin':True,
+        }
+        </field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delficourse_admin_menu_action"
+              name="Admin"
+              parent="delficourse_penyelenggara_categ"
+              action="delficourse_admin_action"
+              sequence="20"/>
+</odoo>

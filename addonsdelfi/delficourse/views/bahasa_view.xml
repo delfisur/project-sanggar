@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="delficourse_bahasa_view_tree" model="ir.ui.view">
+        <field name="name">Program Bahasa</field>
+        <field name="model">delficourse.bahasa</field>
+        <field name="arch" type="xml">
+            <tree string="delficourse_bahasa_tree">
+                <field name="name"/>
+                <field name="pilihan"/>
+                <field name="level_belajar"/>
+                <field name="biaya"/>
+                <field name="kapasitas_kelas"/>
+                <field name="jml_siswa_bahasa"/>
+                <field name="sisa_kapasitas"/>
+                <field name="materi"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="delficourse_bahasa_view_form" model="ir.ui.view">
+        <field name="name">Program Bahasa</field>
+        <field name="model">delficourse.bahasa</field>
+        <field name="arch" type="xml">
+            <form string="delficourse_bahasa_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="pilihan"/>
+                        <field name="level_belajar"/>
+                        <field name="biaya"/>
+                        <field name="kapasitas_kelas"/>
+                        <field name="materi"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="delficourse_bahasa_action" model="ir.actions.act_window">
+        <field name="name">Kursus Bahasa</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delficourse.bahasa</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delficourse_bahasa_menu_action"
+              name="Bahasa"
+              parent="delficourse_pendaftaran_categ"
+              action="delficourse_bahasa_action"
+              sequence="20"/>
+</odoo>
