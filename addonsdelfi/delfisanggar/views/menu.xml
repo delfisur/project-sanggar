@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="delfisanggar_menu_root" 
+            name="SANGGAR TARI" 
+            sequence="10"/>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="delfisanggar_pelatihan_menu_categ" 
+                name="Les Tari" 
+                parent="delfisanggar_menu_root" 
+                sequence="20"/>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="delfisanggar_item_menu_categ" 
+                name="Item" 
+                parent="delfisanggar_menu_root" 
+                sequence="40"/>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="delfisanggar_rental_menu_categ" 
+                name="Sewa Kostum" 
+                parent="delfisanggar_menu_root" 
+                sequence="41"/>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="delfisanggar_user_menu_categ" 
+                name="User" 
+                parent="delfisanggar_menu_root" 
+                sequence="10"/>
+    
+
+</odoo>

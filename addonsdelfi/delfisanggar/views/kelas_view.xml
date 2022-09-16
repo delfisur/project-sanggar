@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- delfisanggar_levelmodel.name tree view -->
+    <record id="delfisanggar_level_view_tree" model="ir.ui.view">
+        <field name="name">Tree Level Kelas</field>
+        <field name="model">delfisanggar.level</field>
+        <field name="arch" type="xml">
+            <tree string="tree level kelas">
+                <field name="name"/>
+                <field name="deskripsi"/>
+                <field name="biaya"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- delfisanggar_level form view -->
+    <record id="delfisanggar_level_view_form" model="ir.ui.view">
+        <field name="name">Form Level Kelas</field>
+        <field name="model">delfisanggar.level</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="deskripsi"/>
+                        <field name="biaya"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="delfisanggar_level_action" model="ir.actions.act_window">
+        <field name="name">delfisanggar_level.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfisanggar.level</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    
+     <menuitem id="delfisanggar_level_menu_act" 
+            name="Kelas" 
+            parent="delfisanggar_pelatihan_menu_categ" 
+            action="delfisanggar_level_action" 
+            sequence="20"/>
+</odoo>

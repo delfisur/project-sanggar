@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- delfisanggar_jadwal tree view -->
+    <record id="model_name_view_tree" model="ir.ui.view">
+        <field name="name">delfisanggar_jadwal.view.tree</field>
+        <field name="model">delfisanggar.jadwal</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pelatih_id"/>
+                <field name="materi_id"/>
+                <field name="hari"/>
+                <field name="jam"/>
+                <field name="kelas_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- delfisanggar_jadwal form view -->
+    <record id="delfisanggar_jadwal_view_form" model="ir.ui.view">
+        <field name="name">delfisanggar_jadwal.view.form</field>
+        <field name="model">delfisanggar.jadwal</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="pelatih_id"/>
+                        <field name="materi_id"/>
+                        <field name="hari"/>
+                        <field name="jam"/>
+                        <field name="kelas_id"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page name="session" string="Anggota Session">
+                            <field name="session_ids">
+                                <tree editable ="bottom">
+                                    <!-- <field name="no_nota_id"/> -->
+                                    <field name="user_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- delfisanggar_jadwal action window -->
+    <record id="delfisanggar_jadwal_action" model="ir.actions.act_window">
+        <field name="name">delfisanggar_jadwal.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfisanggar.jadwal</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfisanggar_jadwal_menu_act" 
+            name="Jadwal" 
+            parent="delfisanggar_pelatihan_menu_categ" 
+            action="delfisanggar_jadwal_action" 
+            sequence="40"/>
+
+</odoo>

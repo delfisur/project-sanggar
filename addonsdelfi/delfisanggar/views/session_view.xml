@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+  
+    <!-- delfisanggar_session tree view -->
+    <record id="delfisanggar_session_view_tree" model="ir.ui.view">
+        <field name="name">delfisanggar_session.view.tree</field>
+        <field name="model">delfisanggar.session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="absen"/>
+                <field name="user_id"/>
+                <field name="jadwal_tari_id"/>
+                <field name="kelas"/>
+                <field name="materi"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- delfisanggar_session form view -->
+    <record id="model_name_view_form" model="ir.ui.view">
+        <field name="name">delfisanggar_session.view.form</field>
+        <field name="model">delfisanggar.session</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="absen"/>
+                        <field name="user_id"/>
+                        <field name="jadwal_tari_id"/>
+                        <field name="kelas"/>
+                        <field name="materi"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- delfisanggar_session action window -->
+    <record id="delfisanggar_session_action" model="ir.actions.act_window">
+        <field name="name">delfisanggar_session.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfisanggar.session</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfisanggar_session_menu_act" 
+            name="Pertemuan" 
+            parent="delfisanggar_pelatihan_menu_categ" 
+            action="delfisanggar_session_action" 
+            sequence="41"/>
+</odoo>

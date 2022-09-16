@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="seq_delfisanggar_peserta" model="ir.sequence">
+            <field name="name">Member Sequence</field>
+            <field name="code">delfisanggar.datamember</field>
+            <field name="prefix">IDPES</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+    </data>
+    
+  
+</odoo>

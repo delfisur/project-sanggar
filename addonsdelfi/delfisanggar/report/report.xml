@@ -1,0 +1,24 @@
+<odoo>
+
+    <record id="report_penyewaan_xlsx" model="ir.actions.report">
+        <field name="name">Penyewaan Excel</field>
+        <field name="model">delfisanggar.penyewaan</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">delfisanggar.report_penyewaan_xlsx</field>
+        <field name="report_file">delfisanggar.report_penyewaan_xlsx</field>
+        <field name="binding_model_id" ref="model_delfisanggar_penyewaan"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="report_penyewaan_pdf" model="ir.actions.report">
+        <field name="name">Cetak Kwitansi</field>
+        <field name="model">delfisanggar.penyewaan</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">delfisanggar.report_penyewaan_pdf</field>
+        <field name="report_file">delfisanggar.report_penyewaan_pdf</field>
+        <field name="binding_model_id" ref="model_delfisanggar_penyewaan"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+</odoo>

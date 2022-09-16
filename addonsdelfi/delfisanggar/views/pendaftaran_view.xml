@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- delfisanggar_pendaftaran inherit tree view -->
+    <record id="delfisanggar_pendaftaran_tree_inherit" model="ir.ui.view">
+        <field name="name">delfisanggar_pendaftaran.inherit.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="id_peserta"/>
+            </xpath>
+             <xpath expr="//field[@name='phone']" position="after">
+                <field name="tingkatan_kelas"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='city']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- delfisanggar_pendaftaran inherit form view -->
+    <record id="delfisanggar_pendaftaran_form_inherit" model="ir.ui.view">
+        <field name="name">delfisanggar_pendaftaran.inherit.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+        <!-- <form string="">
+            <header>
+                <button string="Confirm" name="action_confirm" type="object" states="draft" /> 
+                <button string="Done" name="action_done" type="object" states="confirm"/>
+                <button string="Cancel" name="action_cancel" type="object" confirm="Apakah anda akan menolak pendaftaran?" states="confirm,done" />
+                <button string="Kembali ke Draft" name="action_draft" type="object" confirm="Apakah yakin data akan dikembalikan ke draf ?" states="cancel"/>
+
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+            </header> -->
+
+
+
+            <xpath expr="//field[@name='type']" position="before">
+                <field name="id_peserta" />
+            </xpath>
+
+            <xpath expr="//field[@name='id_peserta']" position="after">
+                <field name="tingkatan_kelas"/>
+            </xpath>
+
+            
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="replace">
+                <field name="status_pendidikan"/>
+            </xpath>
+            <xpath expr="//field[@name='status_pendidikan']" position="before">
+                <field name="nisn"/>
+            </xpath>
+             <xpath expr="//field[@name='status_pendidikan']" position="after">
+                <field name="ttl"/>
+            </xpath>
+            <xpath expr="//field[@name='ttl']" position="after">
+                <field name="jenis_kelamin"/>
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="string">Telepon</attribute>
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+           
+        </field>
+    </record>
+
+    <!-- delfisanggar_pendaftaran action window -->
+    <record id="delfisanggar_pendaftaran_action" model="ir.actions.act_window">
+        <field name="name">User</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfisanggar_pendaftaran_menu_act" 
+            name="Peserta" 
+            parent="delfisanggar_user_menu_categ" 
+            action="delfisanggar_pendaftaran_action" 
+            sequence="10"/>
+</odoo>

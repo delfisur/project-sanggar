@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- delfisanggar_pengembalian tree view -->
+    <record id="delfisanggar_pengembalian_view_tree" model="ir.ui.view">
+        <field name="name">delfisanggar_pengembalian.view.tree</field>
+        <field name="model">delfisanggar.pengembalian</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="kode_id"/>
+                <field name="keterlambatan"/>
+                <field name="denda"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- delfisanggar_pengembalian form view -->
+    <record id="delfisanggar_pengembalian_view_form" model="ir.ui.view">
+        <field name="name">delfisanggar_pengembalian.view.form</field>
+        <field name="model">delfisanggar.pengembalian</field>
+        <field name="arch" type="xml">
+            <form string="pengembalian">
+                <sheet>
+                    <group name='detail' string="Detail">
+                        <field name="surat_penyewaan"/>
+                        <field name="kode_id"/>
+                        <field name="tanggal_limit"/>
+                    </group>
+                    <group name="pengembalian" string="Pengembalian">
+                        <field name="tgl_kembali"/>
+                        <field name="kembali_jaminan"/>
+                    </group>
+                    <group>
+                        <field name="keterlambatan"/>
+                        <field name="denda"/>
+                    </group>
+                     <!-- <notebook colspan="4">
+                        <page name="penyewaan" string="List Penyewaan">
+                            <field name="penyewaan_ids">
+                                <tree editable ="bottom">
+                                    <field name="user_id"/>
+                                    <field name="tgl_sewa"/>
+                                    <field name="tgl_kembali"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook colspan="4">
+                        <page name="barang" string="List Barang">
+                            <field name="penyewaan_ids">
+                                <tree editable ="bottom">
+                                    <field name="list_ids"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook> -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- delfisanggar_pengembalian action window -->
+    <record id="delfisanggar_pengembalian_action" model="ir.actions.act_window">
+        <field name="name">delfisanggar_pengembalian.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfisanggar.pengembalian</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfisanggar_pengembalian_menu_act" 
+            name="Pengembalian" 
+            parent="delfisanggar_rental_menu_categ" 
+            action="delfisanggar_pengembalian_action" 
+            sequence="20"/>
+
+</odoo>

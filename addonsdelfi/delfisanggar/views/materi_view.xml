@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- delfisanggar_materi tree view -->
+    <record id="delfisanggar_materi_view_tree" model="ir.ui.view">
+        <field name="name">delfisanggar_materi.view.tree</field>
+        <field name="model">delfisanggar.materi</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="durasi"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- delfisanggar_materi form view -->
+    <record id="delfisanggar_materi_view_form" model="ir.ui.view">
+        <field name="name">delfisanggar_materi.view.form</field>
+        <field name="model">delfisanggar.materi</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="durasi"/>
+                    </group>
+                   
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- delfisanggar_materi action window -->
+    <record id="delfisanggar_materi_action" model="ir.actions.act_window">
+        <field name="name">delfisanggar_materi.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfisanggar.materi</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfisanggar_materi_menu_act" 
+            name="Materi" 
+            parent="delfisanggar_pelatihan_menu_categ" 
+            action="delfisanggar_materi_action" 
+            sequence="10"/>
+</odoo>

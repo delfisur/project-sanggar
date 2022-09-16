@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- delfisanggar_penyewaan tree view -->
+    <record id="delfisanggar_penyewaan_view_tree" model="ir.ui.view">
+        <field name="name">delfisanggar_penyewaan.view.tree</field>
+        <field name="model">delfisanggar.penyewaan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sudah_kembali"/>
+                <field name="kode"/>
+                <field name="user_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- delfisanggar_penyewaan form view -->
+    <record id="delfisanggar_penyewaan_view_form" model="ir.ui.view">
+        <field name="name">delfisanggar_penyewaan.view.form</field>
+        <field name="model">delfisanggar.penyewaan</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button string="Sewakan" name="action_sewakan" type="object" states="formulir" class="btn-success"/>
+                    <button string="Cancel" name="action_cancel" type="object" confirm="Apakan yakin penyewaan dibatalkan?" states="sewakan" class="btn-danger"/>
+                    <button string="Edit Formulir" name="action_formulir" type="object" confirm="Apakan ingin memperbaiki data?" states="cancel" class="btn-info"/>
+                    
+                    <field name="state" widget="statusbar" statusbar_visible="formulir,sewakan,cancel"/>
+                </header>
+                <sheet>
+                    <div class="oe title">
+                        <h1 style ='color:blue'>
+                            <field name="kode" readonly='1' attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        </h1>
+                    </div>
+                    <group name="kembali" string="Status Barang">
+                        <field name="sudah_kembali" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                    </group>
+                    <group name="data" string="Data">
+                        <field name="user_id" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="tgl_sewa" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="tgl_limit" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="harga" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="hari" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="bayar" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="jaminan" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page name="list_penyewaan" string="List Penyewaan">
+                            <field name="list_ids">
+                                <tree editable ="bottom">
+                                    <field name="kostum_id"/>
+                                    <field name="hargasewa"/>
+                                    <field name="qty"/>
+                                    <field name="sub_total" sum="Total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- delfisanggar_penyewaan action window -->
+    <record id="delfisanggar_penyewaan_action" model="ir.actions.act_window">
+        <field name="name">delfisanggar_penyewaan.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfisanggar.penyewaan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfisanggar_penyewaan_menu_act" 
+            name="Penyewaan" 
+            parent="delfisanggar_rental_menu_categ" 
+            action="delfisanggar_penyewaan_action" 
+            sequence="10"/>
+</odoo>
