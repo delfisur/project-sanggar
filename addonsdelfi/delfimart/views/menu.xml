@@ -12,20 +12,26 @@
                 sequence="10"/>
 
         <!-- This Menu Item Must have a parent -->
-        <menuitem id="delfimart_demand_menu_categ" 
+        <!-- <menuitem id="delfimart_demand_menu_categ" 
                 name="Permintaan Toko" 
                 parent="delfimart_root" 
-                sequence="40"/>
+                sequence="40"/> -->
        
        <!-- This Menu Item Must have a parent -->
-        <menuitem id="delfimart_supply_menu_categ" 
+        <!-- <menuitem id="delfimart_supply_menu_categ" 
                 name="Persediaan Toko" 
                 parent="delfimart_root" 
-                sequence="40"/>
+                sequence="40"/> -->
        
        <!-- This Menu Item Must have a parent -->
        <menuitem id="delfimart_transaksi_menu_categ" 
                 name="Transaksi" 
                 parent="delfimart_root" 
-                sequence="50"/>
+                sequence="20"/>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="delfimart_user_menu_categ" 
+                name="User" 
+                parent="delfimart_root" 
+                sequence="30"/>
 </odoo>

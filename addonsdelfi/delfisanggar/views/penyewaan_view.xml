@@ -35,16 +35,21 @@
                         </h1>
                     </div>
                     <group name="kembali" string="Status Barang">
-                        <field name="sudah_kembali" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="sudah_kembali" readonly='1' attrs="{'readonly':[('state','!=','formulir')]}"/>
                     </group>
                     <group name="data" string="Data">
-                        <field name="user_id" attrs="{'readonly':[('state','!=','formulir')]}"/>
-                        <field name="tgl_sewa" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="peserta" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="kodepeserta_id" readonly='1' attrs="{'invisible':[('peserta','=',False)], 'readonly':[('state','!=','formulir')]}"/>
+                        <field name="user_id" attrs="{'invisible':[('peserta','=',False)], 'readonly':[('state','!=','formulir')]}"/>
+                        <field name="nama_penyewa" attrs ="{'invisible':[('peserta','=',True)], 'readonly':[('state','!=','formulir')]}"/>
+                        <field name="tgl_sewa" readonly='1' attrs="{'readonly':[('state','!=','formulir')]}"/>
                         <field name="tgl_limit" attrs="{'readonly':[('state','!=','formulir')]}"/>
-                        <field name="harga" attrs="{'readonly':[('state','!=','formulir')]}"/>
-                        <field name="hari" attrs="{'readonly':[('state','!=','formulir')]}"/>
-                        <field name="bayar" attrs="{'readonly':[('state','!=','formulir')]}"/>
-                        <field name="jaminan" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="jaminan_sewa" attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="harga" readonly='1' attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="hari" readonly='1' attrs="{'readonly':[('state','!=','formulir')]}"/>
+                        <field name="bayar" readonly='1' attrs="{'readonly':[('state','!=','formulir')]}"/>
+                    </group>
+                    <group name="harganonpeserta" string="JIKA PESERTA MAKA HARGA SEWA MENJADI 50.000">
                     </group>
                     <notebook colspan="4">
                         <page name="list_penyewaan" string="List Penyewaan">

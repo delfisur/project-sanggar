@@ -15,17 +15,18 @@ class Kostum(models.Model):
     status_penyewaan = fields.Char(string='Status Penyewaan')
 
     image_kostum = fields.Binary(string='Kostum Image', max_width=10, max_height=10)
-    harga = fields.Integer(string='Harga/hari')
-    # harga_peserta = fields.Integer(compute='_compute_harga_diskon',string='Harga Peserta')
+    harga = fields.Integer(string='Harga')
+
+    harga_nonpeserta = fields.Integer(compute='_compute_harga_nonpeserta',string='Harga Non Peserta')
     
 
-    # @api.depends('harga')
-    # def _compute_harga_diskon(self):
-    #     for record in self:
-    #         if record.harga:
-    #             record.harga_peserta = record.harga-(record.harga * (20/100))
-    #         else:
-    #             record.harga = 0
+    @api.depends('harga')
+    def _compute_harga_nonpeserta(self):
+        for record in self:
+            if record.harga:
+                record.harga_nonpeserta = record.harga + (record.harga * (20/100))
+            else:
+                record.harga_nonpeserta = 0
     
 
 class AlatMusik(models.Model):

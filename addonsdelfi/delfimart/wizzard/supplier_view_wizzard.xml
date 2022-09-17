@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- model.name form view -->
+    <record id="supplier_view_form_wizzard" model="ir.ui.view">
+        <field name="name">Supplier Baru</field>
+        <field name="model">delfimart.supplier</field>
+        <field name="arch" type="xml">
+            <form string="Form Supplier Baru">
+                <group>
+                    <field name="supplier_id"/>
+                    <field name="nama_supplier"/>
+                </group>
+                <footer>
+                    <button name="supplier_baru" type="object" string="Create" class="btn btn-warning"/>
+                    <button string="Cancel" special="cancel" class="btn btn-warning"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="delfimart_supplier_action_wizzard" model="ir.actions.act_window">
+        <field name="name">Supplier Baru</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfimart.supplier</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="supplier_view_form_wizzard"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfimart_supplier_menu_action_wizzard" 
+            name="Supplier Baru" 
+            parent="delfimart_root" 
+            action="delfimart_supplier_action_wizzard" 
+            sequence="41"/>
+</odoo>

@@ -25,12 +25,13 @@
                 <form string="">
                         <sheet>
                                 <group>
-                                        <field name="no_nota_id"/>
-                                        <field name="kode_barang_id"/>
-                                        <field name="harga_jual"/>
-                                        <field name="jumlah"/>
-                                        <field name="sub_total"/>
-                                        
+                                        <tree editable='bottom'>
+                                                <field name="no_nota_id"/>
+                                                <field name="kode_barang_id"/>
+                                                <field name="harga_jual"/>
+                                                <field name="jumlah"/>
+                                                <field name="sub_total"/>
+                                        </tree>
                                 </group>
                         </sheet>
                 </form>

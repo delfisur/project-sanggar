@@ -14,35 +14,40 @@ class Penyewaan(models.Model):
     membership = fields.Boolean(string='Apakah peserta sanggar?')
     nama_non_peserta = fields.Char(string='Nama Nonpeserta')
 
+    peserta = fields.Boolean(string='Apakah Peserta')
+    nama_penyewa = fields.Many2one(comodel_name='delfisanggar.nonpeserta', string='New Member')
+
     name = fields.Char(string='Name')
     kode = fields.Char(string='Kode Penyewaan', required=True, copy=False, readonly=True, default=lambda self:_('New'))
-    user_id = fields.Many2one(comodel_name='res.partner', string='Nama Penyewa')
-    # tgl_sewa = fields.Datetime(string='Tanggal Sewa', default=fields.Datetime.now())
-    # tgl_limit = fields.Datetime(string='Tanggal Limit')
+    user_id = fields.Many2one(comodel_name='res.partner', string='Nama Peserta')
+    kodepeserta_id = fields.Char(compute='_compute_id_peserta', string='ID Peserta')
+    
+    
 
     tgl_sewa = fields.Date(string='Tanggal Sewa', default=fields.Date.today())
     tgl_limit = fields.Date(string='Tanggal Limit')
     tgl_skrg  = fields.Date(string='Tanggal Sekarang', default=fields.Date.today())
 
-    dikembalikan_id = fields.Many2one(comodel_name='delfisanggar.pengembalian', string='Pengembalian')
     
     harga = fields.Integer(compute='_compute_harga', string='Harga/hari')
     hari = fields.Char(compute='_compute_hari',string='Total Hari')
-    # hari = fields.Char(string='Total Hari Penyewaan')
 
     bayar = fields.Integer(compute='_compute_bayar',string='Total Pembayaran')
 
+    jaminan_sewa = fields.Selection([('ktp', 'KTP'), ('uang', 'Rp100.000')], string='Jaminan', required=True)
     
 
-    jaminan = fields.Selection(string='Jaminan', selection=[('ktp', 'KTP'), ('uang', 'Rp.100.000')], required=True)
-    
     list_ids = fields.One2many(comodel_name='delfisanggar.penyewaandetail', inverse_name='kode_id', string='List')
 
     state = fields.Selection(string='status', selection=[('formulir', 'Formulir'), ('sewakan', 'Acc Sewa'), ('cancel', 'Cancel')], required=True, readonly=True, default='formulir')
     
     sudah_kembali = fields.Boolean(string='Apakah sudah dikembalikan?', default=False)
 
-            
+    @api.depends('user_id')
+    def _compute_id_peserta(self):
+        for record in self:
+            record.kodepeserta_id = record.user_id.id_peserta
+
 
     @api.depends('hari')
     def _compute_bayar(self):
@@ -91,11 +96,28 @@ class Penyewaan(models.Model):
     @api.constrains('tgl_sewa','tgl_limit','tgl_skrg')
     def check_date(self):
         for rec in self:
-            if rec.tgl_sewa > rec.tgl_limit:
-                raise ValidationError ('Tanggal Penyewaan harus sebelum Tanggal Limit Pengembalian')
-            elif rec.tgl_sewa < rec.tgl_skrg:
-                raise ValidationError ('Tanggal tidak berlaku')
-
+            if rec.tgl_limit < rec.tgl_sewa:
+                raise ValidationError ('TANGGAL PENGEMBALIAN HARUS SESUDAH TANGGAL SEWA')
+           
+    # def write(self,vals):
+    #     for rec in self:
+    #         a = self.env['delfimart.penyewaandetail'].search([('no_nota_id','=',rec.id)])
+    #         print(a)
+    #         for data in a:
+    #             print(str(data.kode_barang_id.name)+' '+str(data.jumlah)+' '+str(data.kode_barang_id.stok)) 
+    #             data.kode_barang_id.stok += data.jumlah       
+    #     record = super(Penjualan,self).write(vals)
+    #     for rec in self:
+    #         b = self.env['delfimart.penjualandetail'].search([('no_nota_id','=',rec.id)])
+    #         print(a)
+    #         print (b)
+    #         for databaru in b:
+    #             if databaru in a:
+    #                 print(str(databaru.kode_barang_id.name)+' '+ str(databaru.jumlah)+' '+str(databaru.kode_barang_id.stok))
+    #                 databaru.kode_barang_id.stok -= databaru.jumlah         
+    #             else:
+    #                 pass
+    #     return record
 
 
 
@@ -104,13 +126,20 @@ class Penyewaan_Details(models.Model):
     _name = 'delfisanggar.penyewaandetail'
     _description = 'List'
 
+    
+
     kode_id = fields.Many2one(comodel_name='delfisanggar.penyewaan', string='kode')
     kostum_id = fields.Many2one(comodel_name='delfisanggar.kostum', string='Nama Kostum')
     hargasewa = fields.Integer(string='Harga Sewa')
+    hargasewa_non = fields.Integer(string='List Harga Non Peserta')
+
     qty = fields.Integer(string='Qty')
     sub_total = fields.Integer(compute='_compute_harga', string='Harga/hari')
-    
+
+
+    dikembalikan_id = fields.Many2one(comodel_name='delfisanggar.pengembalian', string='Pengembalian')
      
+
     @api.model
     def create(self, vals):
         record = super(Penyewaan_Details, self).create(vals)
@@ -119,13 +148,18 @@ class Penyewaan_Details(models.Model):
             return record
         else:
             self.qty =''
-
-
-
+        
     @api.onchange('kostum_id')
     def _onchange_harga(self):
         if (self.kostum_id.harga):
             self.hargasewa = self.kostum_id.harga
+        else:
+            self.hargasewa = ''
+
+    @api.onchange('kostum_id')
+    def _onchange_harga_nonpeserta(self):
+        if (self.kostum_id.harga_nonpeserta):
+            self.hargasewa = self.kostum_id.harga_nonpeserta
         else:
             self.hargasewa = ''
 
@@ -137,5 +171,14 @@ class Penyewaan_Details(models.Model):
                 record.sub_total = record.qty * record.hargasewa
             else:
                 record.sub_total = 0
+
+
+    @api.constrains('qty')
+    def _checkquantity(self):
+        for rec in self:
+            if rec.qty < 1:
+                raise ValidationError('Jumlah Belanjaan {}'.format(rec.kostum_id.name))
+            elif rec.qty > rec.kostum_id.stok:
+                raise ValidationError (f'Stok {rec.kostum_id.name} tidak mencukupi hanya tersedia {rec.kostum_id.stok}')
 
     

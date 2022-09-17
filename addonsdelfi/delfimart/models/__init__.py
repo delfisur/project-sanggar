@@ -8,6 +8,8 @@ from . import person
 from . import penjualan
 from . import pembelian
 from . import dagangan
+from . import kasir
+from . import komisaris
 
 
 

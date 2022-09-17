@@ -41,6 +41,8 @@
         # 'views/alatmusik_view.xml',
         'views/penyewaan_view.xml',
         'views/pengembalian_view.xml',
+        'views/nonpeserta_view.xml',
+
 
         'report/report.xml',
         'report/kwitansi_penyewaan.xml',

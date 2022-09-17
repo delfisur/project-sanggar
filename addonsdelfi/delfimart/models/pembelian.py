@@ -6,8 +6,9 @@ class Pembelian(models.Model):
     
     _name = 'delfimart.pembelian'
     _description = 'Pembelian'
-    _rec_name = 'kode_pemasok_id'
+    # _rec_name = 'kode_pemasok_id'
 
+    
     pembeliandetail_ids = fields.One2many(
         comodel_name='delfimart.pembeliandetail', 
         inverse_name='no_masuk_id', 
@@ -32,6 +33,7 @@ class Pembelian(models.Model):
             a = sum(self.env['delfimart.pembeliandetail'].search([('no_masuk_id', '=', record.id)]).mapped('sub_total'))
             record.total_bayar = a
 
+    
     
     
 class PembelianDetail(models.Model):
@@ -64,6 +66,14 @@ class PembelianDetail(models.Model):
     #     comodel_name='delfimart.barang', 
     #     inverse_name='kode_produk_id', 
     #     string='Pembelian Detail')
+
+    @api.model
+    def create(self, vals):
+        record = super(PembelianDetail, self).create(vals)
+        if record.jumlah:
+            self.env['delfimart.barang'].search([('id', '=', record.kode_barang_id.id)]).write({
+                'stok': record.kode_barang_id.stok+record.jumlah})
+            return record
 
     @api.depends()
     def _compute_jumlah_stok(self):

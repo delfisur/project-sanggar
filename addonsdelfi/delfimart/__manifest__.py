@@ -21,7 +21,7 @@
     'application': True,
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product'],
+    'depends': ['base','product','report_xlsx'],
 
     # always loaded
     'data': [
@@ -37,6 +37,16 @@
         'views/penjualan_view.xml',
         'views/pembelian_view.xml',
         'views/dagangan_view.xml',
+        'views/kasir_view.xml',
+        # 'views/person_view.xml',
+        'views/komisaris_view.xml',
+        'views/direksi_view.xml',
+        'report/report.xml',
+        'report/faktur_penjualan_pdf.xml',
+        'report/wizzard_penjualanreport_pdf.xml',
+        'wizzard/barangdatang_view_wizzard.xml',
+        'wizzard/supplier_view_wizzard.xml',
+        'wizzard/penjualanreport_wizzard.xml',
 
     ],
     # only loaded in demonstration mode

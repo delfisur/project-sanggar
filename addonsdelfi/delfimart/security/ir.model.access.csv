@@ -9,6 +9,12 @@ access_delfimart_penjualan,access.delfimart.penjualan,model_delfimart_penjualan,
 access_delfimart_pembelian,access.delfimart.pembelian,model_delfimart_pembelian,,1,1,1,1
 access_delfimart_penjualandetail,access.delfimart.penjualandetail,model_delfimart_penjualandetail,,1,1,1,1
 access_delfimart_pembeliandetail,access.delfimart.pembeliandetail,model_delfimart_pembeliandetail,,1,1,1,1
+access_delfimart_kasir,access.delfimart.kasir,model_delfimart_kasir,,1,1,1,1
+access_delfimart_barangdatang,access.delfimart.barangdatang,model_delfimart_barangdatang,,1,1,1,1
+access_delfimart_supplier,access.delfimart.supplier,model_delfimart_supplier,,1,1,1,1
+access_delfimart_penjualanreport,access.delfimart.penjualanreport,model_delfimart_penjualanreport,,1,1,1,1
+
+
 
 
 

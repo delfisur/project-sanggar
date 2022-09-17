@@ -9,7 +9,7 @@
             <tree>
                 <!-- Add your fields here -->
                 <field name="nomor_kode_grup"/>
-                <field name="nama_grup"/>
+                <field name="name"/>
                 <field name="produk_ids"/>
             </tree>
         </field>
@@ -24,8 +24,9 @@
                 <sheet>
                     <group>
                         <!-- Add your fields here -->
+                        <field name="name"/>
                         <field name="nomor_kode_grup"/>
-                        <field name="nama_grup"/>
+                        
                         
                     </group>
                     <notebook colspan="4">
@@ -34,7 +35,7 @@
                                 <tree editable ="bottom">
                                     <!-- <field name="nomer_kode_produk_id"/> -->
                                     <field name="nomor_kode_produk"/>
-                                    <field name="nama_produk"/>
+                                    <field name="name"/>
                                     <!-- <field name="kode_produk_id"/> -->
                             
                                 </tree>

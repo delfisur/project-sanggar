@@ -13,7 +13,7 @@
                 <!-- <field name="status_penyewaan"/> -->
                 <field name="image_kostum" widget="image" options='{"size": [75, 75]}'/>
                 <field name="harga"/>
-                <!-- <field name="harga_peserta"/> -->
+                <field name="harga_nonpeserta"/>
             </tree>
         </field>
     </record>
@@ -115,7 +115,7 @@
                             <group>
                                 <field name="image_kostum" class="oe_avatar" widget="image"/>
                                 <field name="harga"/>
-                                <!-- <field name="harga_peserta"/> -->
+                                <field name="harga_nonpeserta"/>
                             </group>
                         </page>
                         <page string="Detail Kostum">

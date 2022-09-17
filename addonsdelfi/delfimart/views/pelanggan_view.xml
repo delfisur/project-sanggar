@@ -9,7 +9,7 @@
             <tree>
                 <!-- Add your fields here -->
                 <field name="kode_pelanggan"/>
-                <field name="nama_pelanggan"/>
+                <!-- <field name="name"/> -->
                 <!-- <field name="alamat"/> -->
                 <field name="no_telepon"/>
         
@@ -26,10 +26,11 @@
                 <sheet>
                     <group>
                         <field name="kode_pelanggan"/>
-                        <field name="nama_pelanggan"/>
+                        <!-- <field name="name"/> -->
                     </group>
                     <group>
-                        <field name="alamat"/>
+                        <field name="name"/>
+                        <field name="gender"/>
                         <field name="no_telepon"/>
                     </group>
                 </sheet>
@@ -48,7 +49,7 @@
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="delfimart_pelanggan_menu_act" 
             name="Pelanggan" 
-            parent="delfimart_root" 
+            parent="delfimart_user_menu_categ" 
             action="delfimart_pelanggan_action" 
-            sequence="50"/>
+            sequence="5"/>
 </odoo>

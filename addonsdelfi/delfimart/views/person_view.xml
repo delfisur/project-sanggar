@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+
+        <!-- model.name tree view -->
+        <record id="delfimart_person_view_tree" model="ir.ui.view">
+            <field name="name">delfimart.person_action.view.tree</field>
+            <field name="model">delfimart.person</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="no_telepon"/> 
+                </tree>
+            </field>
+        </record>
+
+        <!-- delfimart.person form view -->
+        <record id="delfimart_person_view_form" model="ir.ui.view">
+            <field name="name">delfimart.person.view.form</field>
+            <field name="model">delfimart.person</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="no_telepon"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- delfimart. action window -->
+        <record id="delfimart_person_action" model="ir.actions.act_window">
+            <field name="name">delfimart.person.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">delfimart.person</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="delfimart_person_menu_act" 
+                name="Manusia" 
+                parent="delfimart_root" 
+                action="delfimart_person_action" 
+                sequence="30"/>
+    
+</odoo>

@@ -8,7 +8,8 @@
         <tree>
             <!-- Add your fields here -->
             <field name="kode_produk_id"/>
-            <field name="nama_barang"/>
+            <field name="name"/>
+            <field name="kode_barang"/>
             <field name="satuan"/>
             <field name="harga_beli"/>
             <field name="harga_jual"/>
@@ -22,17 +23,26 @@
     <field name="name">Form Barang</field>
     <field name="model">delfimart.barang</field>
     <field name="arch" type="xml">
-        <form string="">
+        <form string="delfimart_barang_view">
             <sheet>
                 <group>
-                    <!-- Add your fields here -->
-                    <field name="kode_barang"/>
-                    <field name="nama_barang"/>
+                    <field name="name"/>
                     <field name="kode_produk_id"/>
                     <field name="satuan"/>
+                    <field name="kode_spec"/>
+                    <field name="kode_barang"/>
                     <field name="harga_beli"/>
                     <field name="harga_jual"/>
                     <field name="stok"/>
+                </group>
+                <group name="daftar_supplier" string="Daftar Supplier">
+                    <field name="supplier_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="name"/>
+                            <field name="kontak"/>
+                        </tree>
+                    </field>
                 </group>
             </sheet>
         </form>

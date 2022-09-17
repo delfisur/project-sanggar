@@ -6,10 +6,15 @@
         <field name="model">delfimart.penjualan</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="no_nota"/>
-                <field name="kode_pelanggan_id"/>
+                <field name="name"/>
+                <!-- <field name="kode_pelanggan_id"/> -->
                 <field name="total_bayar"/>
-                
+                <field name="membership"/>
+                <field name="nama_nonmember" attrs="{'invisible':[('membership','=','False')]}"/> 
+                <field name="pelanggan_id" attrs="{'invisible':[('membership','=','False')]}"/>
+                <field name="id_member" attrs="{'invisible':[('membership','=','False')]}"/>
+                <field name="tgl_nota"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -20,15 +25,38 @@
         <field name="model">delfimart.penjualan</field>
         <field name="arch" type="xml">
             <form string="">
+                <header>
+                    <button string="Confirm" name="action_confirm" type="object" states="draft" /> <!--Untuk merubah menjadi confim -->
+                    <button string="Done" name="action_done" type="object" states="confirm"/>
+                    <button string="Cancel" name="action_cancel" type="object" confirm="Apakah anda akan membatalkan pembelian?" states="confirm,done" />
+                    <button string="Kembali ke Draft" name="action_draft" type="object" confirm="Apakah yakin anda akan mengembalikan transaksi ini ke draft ?" states="cancel"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
                 <sheet>
                     <group>
-                       <field name="no_nota"/>
-                       <field name="tgl_nota"/>
-                       <field name="total_bayar"/>
+                        <field name="name" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="gender" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="membership" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="nama_nonmember" attrs ="{'invisible':[('membership','=',True)], 'readonly':[('state','!=','draft')]}"/>
+                        <field name="pelanggan_id" attrs ="{'invisible':[('membership','=',False)], 'readonly':[('state','!=','draft')]}"/>
+                        <field name="id_member" attrs ="{'invisible':[('membership','=',False)], 'readonly':[('state','!=','draft')]}"/>
+                        <field name="tgl_nota" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="total_bayar" attrs="{'readonly':[('state','!=','draft')]}"/>
                     </group>
+<!--                    <group>-->
+<!--                        <field name="name" />-->
+<!--                        <field name="gender" />-->
+<!--                        <field name="membership" />-->
+<!--                        <field name="nama_nonmember" attrs ="{'invisible':[('membership','=',True)]}"/>-->
+<!--                        <field name="pelanggan_id" attrs ="{'invisible':[('membership','=',False)]}"/>-->
+<!--                        <field name="id_member" attrs ="{'invisible':[('membership','=',False)]}"/>-->
+<!--                        <field name="tgl_nota"/>-->
+<!--                        <field name="total_bayar"/>-->
+<!--                    </group>-->
                     <group>
-                       <field name="kode_pelanggan_id"/>
-                       <field name="user_id"/>
+                       <!-- <field name="kode_pelanggan_id"/> -->
+                       <field name="user_id" attrs="{'readonly':[('state','!=','draft')]}"/>
                     </group>
                     <notebook colspan="4">
                         <page name="penjualan_detail" string="Penjualan Detail">
@@ -36,6 +64,7 @@
                                 <tree editable ="bottom">
                                     <!-- <field name="no_nota_id"/> -->
                                     <field name="kode_barang_id"/>
+                                    <field name="satuan"/>
                                     <field name="harga_jual"/>
                                     <field name="jumlah"/>
                                     <field name="sub_total" sum="Total"/>

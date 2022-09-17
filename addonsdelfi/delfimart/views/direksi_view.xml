@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- delfimart.direksi action window -->
+    <record id="delfimart_direksi_action" model="ir.actions.act_window">
+        <field name="name">delfimart.direksi.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfimart_direksi_menu_act" 
+            name="Direksi" 
+            parent="delfimart_user_menu_categ" 
+            action="delfimart_direksi_action" 
+            sequence="25"/>
+</odoo>

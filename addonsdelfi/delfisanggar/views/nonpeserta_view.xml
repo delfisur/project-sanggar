@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- delfisanggar_nonpeserta tree view -->
+    <record id="model_name_view_tree" model="ir.ui.view">
+        <field name="name">delfisanggar_nonpeserta.view.tree</field>
+        <field name="model">delfisanggar.nonpeserta</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="no_hp"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- delfisanggar_nonpeserta form view -->
+    <record id="delfisanggar_nonpeserta_view_form" model="ir.ui.view">
+        <field name="name">delfisanggar_nonpeserta.view.form</field>
+        <field name="model">delfisanggar.nonpeserta</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="no_hp"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+        <!-- delfisanggar_pendaftaran action window -->
+    <record id="delfisanggar_nonpeserta_action" model="ir.actions.act_window">
+        <field name="name">Non Peserta</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfisanggar.nonpeserta</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfisanggar_nonpeserta_menu_act" 
+            name="Non Peserta" 
+            parent="delfisanggar_user_menu_categ" 
+            action="delfisanggar_nonpeserta_action" 
+            sequence="20"/>
+</odoo>

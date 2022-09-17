@@ -3,9 +3,10 @@ from odoo import models, fields, api
 class Barang(models.Model):
     _name = "delfimart.barang"
     _description = "Barang barangnya"
-    _rec_name = 'nama_barang'
+    # _rec_name = 'nama_barang'
 
-
+    kode_spec = fields.Char(string='Kode Spec')
+    
     kode_barang = fields.Char(
         string='Kode Barang')
 
@@ -13,7 +14,7 @@ class Barang(models.Model):
         comodel_name='delfimart.produk', 
         string='Kode Produk')
         
-    nama_barang = fields.Char(
+    name = fields.Char(
         string='Nama Barang')
     satuan = fields.Char(
         string='Satuan')
@@ -25,6 +26,8 @@ class Barang(models.Model):
     stok = fields.Integer(
         string='Stok')
 
+    supplier_ids = fields.Many2many(comodel_name='delfimart.pemasok', string='Daftar Supplier')
+    
     #  harga_beli = fields.Integer(
     #     compute='_compute_hargasatuan',
     #     string='Harga Satuan')
@@ -46,5 +49,10 @@ class Barang(models.Model):
                 record.harga_jual = record.harga_beli + (record.harga_beli * (20/100))
             else:
                 record.harga_jual = 0
+
+    @api.onchange('kode_produk_id','kode_spec')
+    def _onchange_produk(self):
+        self.kode_barang = str(self.kode_produk_id.nomor_kode_produk) + ' ' + str(self.kode_spec)
+
        
 

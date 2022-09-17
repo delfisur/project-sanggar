@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+   
+    <!-- model.name inherit tree view -->
+    <!-- <record id="delfimart_kasir_view_tree_inherit" model="ir.ui.view">
+        <field name="name">delfimart.kasir.inherit.view.tree</field>
+        <field name="model">delfimart.kasir</field>
+        <field name="inherit_id" ref="delfimart_person_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="id_pegawai"/>
+                <field name="status_pegawai"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">NamaKasir</attribute>    
+            </xpath>
+        </field>
+    </record> -->
+
+     <!-- <record id="delfimart_kasir_view_tree_inherit" model="ir.ui.view">
+        <field name="name">delfimart.kasir.inherit.view.tree</field>
+        <field name="model">delfimart.kasir</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="delfimart_person_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='no_telepon']" position="after">
+                <field name="id_pegawai"/>
+                <field name="status_pegawai"/>
+            </xpath>   
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Nama Kasir</attribute>                
+            </xpath>         
+        </field>
+    </record> -->
+
+     <!-- delfimart.kasir inherit form view -->
+    <!-- <record id="delfimart_kasir_view_form_inherit" model="ir.ui.view">
+        <field name="name">delfimart.kasir.inherit.view.form</field>
+        <field name="model">delfimart.kasir</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="delfimart_person_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//group" position="inside">
+                <group name="data" string="Data">
+                    <field name="id_pegawai"/>
+                    <field name="status_pegawai"/> 
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Nama Kasir</attribute>    
+            </xpath>
+        </field>
+    </record> -->
+
+    <!-- delfimart.kasir action window -->
+    <record id="delfimart_kasir_action" model="ir.actions.act_window">
+        <field name="name">delfimart.kasir.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delfimart.kasir</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="delfimart_kasir_menu_act" 
+            name="Kasir" 
+            parent="delfimart_user_menu_categ" 
+            action="delfimart_kasir_action" 
+            sequence="15"/>
+</odoo>

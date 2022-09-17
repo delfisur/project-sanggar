@@ -10,8 +10,9 @@
                 <sheet>
                     <group>
                         <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="kode_spec"/>
                         <field name="nomor_kode_produk"/>
-                        <field name="nama_produk"/>
                         <field name="kode_grup_id"/>
                     </group>
                     <notebook colspan="4">
@@ -19,7 +20,7 @@
                             <field name="barang_ids">
                                 <tree editable ="bottom">
                                     <field name="kode_barang"/>
-                                    <field name="nama_barang"/>
+                                    <field name="name"/>
                                     <!-- <field name="nomer_kode_produk_id"/> -->
                                 </tree>
                             </field>
@@ -37,8 +38,9 @@
         <field name="arch" type="xml">
             <tree>
                 <!-- Add your fields here -->
+                <field name="name"/>
                 <field name="nomor_kode_produk"/>
-                <field name="nama_produk"/>
+                <field name="kode_spec"/>
                 <field name="kode_grup_id"/>
                 
             </tree>

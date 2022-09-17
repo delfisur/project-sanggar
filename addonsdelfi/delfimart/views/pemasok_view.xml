@@ -9,13 +9,12 @@
             <tree>
                 <!-- Add your fields here -->
                 <field name="kode_pemasok"/>
-                <field name="nama_pemasok"/>
+                <!-- <field name="name"/> -->
                 <!-- <field name="alamat"/>
                 <field name="provinsi"/> -->
                 <field name="no_telepon"/>
                 <!-- <field name="no_fax"/>
                 <field name="kontak"/> -->
-        
             </tree>
         </field>
     </record>
@@ -29,14 +28,22 @@
                 <sheet>
                     <group>
                         <field name="kode_pemasok"/>
-                        <field name="nama_pemasok"/>
+                        <!-- <field name="name"/> -->
                     </group>
                     <group>
-                        <field name="alamat"/>
+                        <field name="name"/>
                         <field name="provinsi"/>
                         <field name="no_telepon"/>
                         <field name="no_fax"/>
                         <field name="kontak"/>
+                    </group>
+                    <group name="daftar_barang" string="Daftar Barang">
+                        <field name="barang_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="harga_jual"/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>
@@ -53,8 +60,8 @@
 
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="delfimart_pemasok_menu_act" 
-            name="Pemasok" 
-            parent="delfimart_root"
+            name="Supplier" 
+            parent="delfimart_user_menu_categ"
             action="delfimart_pemasok_action" 
-            sequence="40"/>
+            sequence="10"/>
 </odoo>
